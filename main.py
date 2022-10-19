@@ -40,9 +40,9 @@ def is_bitlink(access_token, url):
     headers = {
         "Authorization": f"Bearer {access_token}",
     }
-    parsed_bitlink = urlparse(url)
+    input_link = urlparse(url)
     data = {
-        "bitlink_id":  f"{parsed_bitlink.netloc}{parsed_bitlink.path}"
+        "bitlink_id":  f"{input_link.netloc}{input_link.path}"
     }
     response = requests.post(url_template, headers=headers, json=data)
     return response.ok 
@@ -51,13 +51,13 @@ def is_bitlink(access_token, url):
 def parse_arg():
     parser = argparse.ArgumentParser()
     parser.add_argument('-l', '--link')
-    args = parser.parse_args()
-    return args
+    arg = parser.parse_args()
+    return arg
 
 
 def main():   
-    args = parse_arg()
-    input_url = args.link
+    arg = parse_arg()
+    input_url = arg.link
     access_token = os.environ["BITLY_ACCESS_TOKEN"]
     if is_bitlink(access_token, input_url):
         print(count_clicks(access_token, input_url))
