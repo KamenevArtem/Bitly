@@ -48,7 +48,7 @@ def is_bitlink(access_token, url):
     return response.ok 
 
 
-def request_url():
+def parse_arg():
     parser = argparse.ArgumentParser()
     parser.add_argument('-l', '--link')
     args = parser.parse_args()
@@ -56,7 +56,7 @@ def request_url():
 
 
 def main():   
-    args = request_url()
+    args = parse_arg()
     input_url = args.link
     access_token = os.environ["BITLY_ACCESS_TOKEN"]
     if is_bitlink(access_token, input_url):
