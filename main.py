@@ -4,7 +4,7 @@ import requests
 import os
 from urllib.parse import urlparse
 from dotenv import load_dotenv
-load_dotenv()
+
 
 def shorten_link(access_token, url):
     url_template = "https://api-ssl.bitly.com/v4/bitlinks"
@@ -68,4 +68,5 @@ def main():
 
 
 if __name__ == "__main__":
+    load_dotenv()
     main()
