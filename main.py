@@ -55,7 +55,8 @@ def parse_arg():
     return arg
 
 
-def main():   
+def main():
+    load_dotenv()
     arg = parse_arg()
     input_url = arg.link
     access_token = os.environ["BITLY_ACCESS_TOKEN"]
@@ -64,9 +65,8 @@ def main():
         print("Введеный адрес является сокращенным")    
     else:
         print(shorten_link(access_token, input_url))
-        print("Введеный адрес не является сокращенным")    
-
+        print("Введеный адрес не является сокращенным")  
+    
 
 if __name__ == "__main__":
-    load_dotenv()
     main()
